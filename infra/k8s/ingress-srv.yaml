@@ -31,10 +31,18 @@ spec:
                 name: comments-srv
                 port:
                   number: 4001
-          - path: /?(.*)
+          - path: /comments
+            pathType: Prefix
+            backend:
+              service:
+                name: query-srv
+                port:
+                  number: 4002
+           - path: /?(.*)
             pathType: Prefix
             backend:
               service:
                 name: client-srv
                 port:
-                  number: 3000
+                  number: 3000      
+
